@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 import speech_recognition
 from django.core import serializers
-import pyttsx3
+
 
 
 # new import
