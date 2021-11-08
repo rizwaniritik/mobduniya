@@ -1,5 +1,41 @@
 [
 {
+  "model": "app.person",
+  "pk": 1,
+  "fields": {
+    "user": 29,
+    "email": "rizwaniritik@gmail.com",
+    "name": "uzi",
+    "phone_no": "8770357453",
+    "customer_image": "productimg/Brainy-TheMobileComparator_sFklJa1.jpg",
+    "house_no": "35",
+    "landmark": "rama colony",
+    "city": "khandwa",
+    "zipcode": 450001,
+    "state": "Madhya Pradesh",
+    "email_verified": null,
+    "phone_no_verified": null
+  }
+},
+{
+  "model": "app.person",
+  "pk": 2,
+  "fields": {
+    "user": 31,
+    "email": "rizwaniritik@gmail.com",
+    "name": "Ritik Rizwani",
+    "phone_no": "8770357453",
+    "customer_image": "productimg/Adobe_Scan_Mar_16_2021_1_1_bCHEbEE.png",
+    "house_no": "31",
+    "landmark": "31 Padam Nagar",
+    "city": "Khandwa",
+    "zipcode": 450001,
+    "state": "Madhya Pradesh",
+    "email_verified": null,
+    "phone_no_verified": null
+  }
+},
+{
   "model": "app.product",
   "pk": 1,
   "fields": {
