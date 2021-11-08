@@ -195,13 +195,7 @@ class MailAssistant():
 
 # output audio
 def outputAudio(output_text):
-    engine=pyttsx3.init("sapi5")
-    voices=engine.getProperty("voices")
-    engine.setProperty("voice",voices[1].id)
-    engine.setProperty("volume",1.0)
-    engine.setProperty("rate",200)
-    engine.say(output_text)
-    engine.runAndWait()
+    pass
 # def home(request):
 #  return render(request, 'app/home.html')
 
