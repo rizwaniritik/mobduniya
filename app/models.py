@@ -57,7 +57,7 @@ CARD_CHOICES =(
 class Person(models.Model):
     user=models.ForeignKey(User,on_delete=CASCADE)
     email=models.EmailField(max_length=50)
-    user=models.CharField(max_length=30)
+    name=models.CharField(max_length=30)
     phone_no=models.CharField(max_length=10,blank=True,null=True)
     customer_image=models.ImageField(upload_to='productimg',blank=True,null=True)
     house_no=models.CharField(max_length=25,blank=True,null=True)
