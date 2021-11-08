@@ -1510,23 +1510,5 @@
     "os": "Android 11",
     "available": true
   }
-},
-{
-  "model": "app.cart",
-  "pk": 106,
-  "fields": {
-    "user": 29,
-    "product": 32,
-    "quantity": 1
-  }
-},
-{
-  "model": "app.cart",
-  "pk": 111,
-  "fields": {
-    "user": 31,
-    "product": 9,
-    "quantity": 1
-  }
 }
 ]
