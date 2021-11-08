@@ -1,0 +1,1 @@
+web: gunicorn mobiduniya.wsgi --log-file=-

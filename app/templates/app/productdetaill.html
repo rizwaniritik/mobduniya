@@ -1,0 +1,405 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Detail{% endblock title %}
+{% block main-content %}
+<style>
+    .rr{
+        background-color: aliceblue;
+    }
+
+</style>
+<div class="container" style="margin-top: 90px;">
+
+    <div class="row">
+        <div class="col-sm-3 text-center" style="margin-left: 10%;">
+            <div class="product-img">
+                <!-- <img src="{{product.product_image1.url}}" alt=""> -->
+                <div class="carousel slide" style="height: 100%;" id="pproduct-slider" data-bs-ride="carousel">
+                    <div class="carousel-inner bg-light box-shade" >
+                        <div class="carousel-item active ">
+                            <div class="imgbx" style="height: 400px;">
+                                <img class="d-block w-100" src="{{productt.product_image1.url}}" alt="">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="imgbx" style="height: 400px;">
+                                <img class="d-block w-100" src="{{productt.product_image2.url}}" alt="">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="imgbx" style="height: 400px;">
+                                <img class="d-block w-100" src="{{productt.product_image3.url}}" alt="">
+
+                            </div>
+                        </div>
+                        <!-- <div class="carousel-item">
+                    <div class="imgbx"  style="height: 400px;">
+                        <img class="d-block w-100"  src="{{product.product_image4.url}}" alt="">
+
+                    </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="carousel-item">
+                    <div class="imgbx"  style="height: 400px;">
+                        <img class="d-block w-100"  src="{{product.product_image5.url}}" alt="">
+
+                    </div>
+                </div> -->
+                    </div>
+                    <a class="carousel-control-prev" style="filter: invert(1);" role="button"
+                        data-bs-target="#pproduct-slider" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a role="button" class="carousel-control-next" style="filter: invert(1);"
+                        data-bs-target="#pproduct-slider" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 offset-sm-1">
+            <h1 class="dark-header px-3" style="color: #ccc; text-transform: capitalize;" >{{productt.brand}}</h1>
+            <h3 class="dark-header px-3 my-3" style="color: #ccc; text-transform: capitalize;" >{{productt.title}}</h3>
+            <!-- <hr> -->
+            <h4 style="font-weight: 700; color: #ccc;" class="dark-header px-3"  >&#8377 {{productt.selling_price}}</h4> <br>
+            {% if request.user.is_authenticated %}
+            {% if item_already_in_cart %}
+            <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Go to Cart</a>
+            {% else %}
+            <form action="/add-to-cart" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{productt.id}}" id="prod_id">
+                <button type="submit" class="btn form-btn shadow px-5 py-2 rr"> Add To Cart</button>
+            </form>
+            {% endif %}
+            {% endif %}
+
+            {% if not request.user.is_authenticated %}
+            <form action="/add-to-cart" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{productt.id}}" id="prod_id">
+                <button type="submit" class="btn form-btn shadow px-5 py-2 rr"> Add To Cart</button>
+            </form>
+            {% endif %}
+
+
+            
+            <a href="{% url 'productviewcompare' productt.id %}" class="btn btn-danger form-btn-2 shadow px-3 py-2 ms-4">COMPARE</a>
+            <a href="{% url 'buy-now' %}" class="btn shadow px-3 py-2 ms-4" s
+                style="border-radius: 50%; background: chocolate; opacity: 0.8; color: #fff;"><i
+                    class="fas fa-microphone"></i></a>
+
+            <!-- <h5 class="mt-5">Available Offers</h5>
+   <ul>
+    <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
+    <li>Special Price Get extra ₹3000 off (price inclusive of discount)</li>
+    <li>No cost EMI ₹1,667/month. Standard EMI also available</li>
+    <li>Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
+   </ul> -->
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-5">
+        <div class="col-sm-12">
+            <h2 class="dark-header text-center"  style="font-size: 1.8em; text-transform: uppercase; color: cornsilk;">specifications</h2>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">General</th>             
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+                    <tr>
+                        <td>Brand</td>
+                        <td>{{productt.brand}}</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>{{productt.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>Rs. {{productt.selling_price}}</td>
+                    </tr>
+                    <tr>
+                        <td>Launch in India</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Form Factor</td>
+                        <td>Touch Screen</td>
+                    </tr>
+                    <tr>
+                        <td>Body Length</td>
+                        <td>{{productt.body_length}}</td>
+                    </tr>
+                    <tr>
+                        <td>Body Width</td>
+                        <td>{{productt.body_width}}</td>
+                    </tr>
+                    <tr>
+                        <td>Body Weight</td>
+                        <td>{{productt.body_weight}}</td>
+                    </tr>
+                    <tr>
+                        <td>Battery</td>
+                        <td>{{productt.battery}}</td>
+                    </tr>
+
+
+
+
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Display</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+
+                    <tr>
+                        <td>Display</td>
+                        <td>{{productt.display}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>TouchScreen</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Resolution</td>
+                        <td>{{productt.resolution}} px</td>
+                    </tr>
+
+                    <tr>
+                        <td>Aspect Ratio</td>
+                        <td>{{productt.screen_to_body_ratio}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Refresh Rate</td>
+                        <td>{{productt.refresh_rate}}</td>
+                    </tr>
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Hardware</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+
+                    <tr>
+                        <td>Processor</td>
+                        <td>{{productt.processor}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>RAM</td>
+                        <td>{{productt.ram}}GB</td>
+                    </tr>
+
+                    <tr>
+                        <td>Internal Storage</td>
+                        <td>{{productt.internal}}GB</td>
+                    </tr>
+
+                    <tr>
+                        <td>Expandable Storage</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Expandable Storage type</td>
+                        <td>microSD</td>
+                    </tr>
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Camera</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+
+                    <tr>
+                        <td>Rear Camera</td>
+                        <td>{{productt.rear_camera}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Rear Flash</td>
+                        <td>dual LED</td>
+                    </tr>
+
+                    <tr>
+                        <td>Front Camera</td>
+                        <td>{{productt.front_camera}}</td>
+                    </tr>
+
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Software</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+
+                    <tr>
+                        <td>Operating System</td>
+                        <td>{{productt.os}}</td>
+                    </tr>
+
+
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-light shadow">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Connectivity</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+                    <tr>
+                        <td>Wi-Fi</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>GPS</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bluetooth</td>
+                        <td>Yes,{{productt.bluetooth}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>USB OTG</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Headphones</td>
+                        <td>{{productt.earphone}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Microphone</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>FM</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Number of SIMs</td>
+                        <td>2</td>
+                    </tr>
+
+                </tBody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="row mt-sm-3 mt-lg-4">
+        <div class="col-sm-12">
+            
+            <table class="table table-bordered table-light shadow ">
+                <tHead >
+                    <tr class="table-dark">
+                        <th colspan="2">Sensors</th>
+                        
+                    </tr>
+                </tHead>
+                <tBody class="text-black">
+
+                    <tr>
+                        <td>Face Unlock</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>FingerPrint</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Compass/Magnetometer</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Promixity Sensor</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Accelerometer</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ambient Light Sensor</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gyroscope</td>
+                        <td>Yes</td>
+                    </tr>
+                </tBody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock main-content %}
