@@ -3,7 +3,7 @@
   "model": "app.person",
   "pk": 1,
   "fields": {
-    "user": 29,
+    "user": 1,
     "email": "rizwaniritik@gmail.com",
     "name": "uzi",
     "phone_no": "8770357453",
@@ -21,7 +21,7 @@
   "model": "app.person",
   "pk": 2,
   "fields": {
-    "user": 31,
+    "user": 1,
     "email": "rizwaniritik@gmail.com",
     "name": "Ritik Rizwani",
     "phone_no": "8770357453",
