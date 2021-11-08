@@ -1546,5 +1546,14 @@
     "os": "Android 11",
     "available": true
   }
+},
+{
+  "model": "app.cart",
+  "pk": 111,
+  "fields": {
+    "user": 1,
+    "product": 9,
+    "quantity": 1
+  }
 }
 ]
