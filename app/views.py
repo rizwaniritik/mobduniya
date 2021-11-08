@@ -213,7 +213,7 @@ class ProductView(View):
         mi=Product.objects.filter(brand='xiaomi')
         realme=Product.objects.filter(brand='realme')
         oneplus=Product.objects.filter(brand='oneplus')
-        return render(request,'app\home.html',{'samsung':samsung,'oppo':oppo,'vivo':vivo,'mi':mi,'realme':realme,'oneplus':oneplus})
+        return render(request,'app/home.html',{'samsung':samsung,'oppo':oppo,'vivo':vivo,'mi':mi,'realme':realme,'oneplus':oneplus})
 
 
 # def product_detail(request):
